@@ -1,1 +1,112 @@
-[]
+{
+    "users": [
+        {
+            "id": 1,
+            "username": "sam",
+            "email": "sam@example.com",
+            "password": "password123",
+            "ShoppingLists": [
+                {
+                    "id": 1,
+                    "name": "list basic",
+                    "date": "2024-06-12",
+                    "items": [
+                        {
+                            "id": 1,
+                            "name": "Arroz",
+                            "quantity": 2,
+                            "amount": "2lb",
+                            "price": 10.99
+                            },
+                            {
+                                "id": 2,
+                                "name": "Feijão",
+                                "quantity": 1,
+                                "amount": "1lb",
+                                "price": 5.99
+                            }
+                        ]
+                },
+                {
+                    "id": 2,
+                    "name": "list advanced",
+                    "date": "2024-06-13",
+                    "items": [
+                            {
+                                "id": 3,
+                                "name": "Carne",
+                                "quantity": 3,
+                                "amount": "3lb",
+                                "price": 20.99
+                            },
+                            {
+                                "id": 4,
+                                "name": "Frango",
+                                "quantity": 2,
+                                "amount": "2lb",
+                                "price": 15.99
+                            }
+                        ]
+                }
+            ]
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "name": "Arroz",
+            "price": 10.99,
+            "amount": [
+                {
+                    "id": 1,
+                    "amount": "1lb"
+                    },
+                    {
+                        "id": 2,
+                        "amount": "2lb"
+                    }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Feijão",
+            "price": 5.99,
+            "amount": [
+                    {
+                        "id": 1,
+                        "amount": "1lb"
+                    }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Carne",
+            "price": 20.99,
+            "amount": [
+                {
+                    "id": 1,
+                    "amount": "1lb"
+                },
+                {
+                    "id": 2,
+                    "amount": "2lb"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Frango",
+            "price": 15.99,
+            "amount": [
+                {
+                    "id": 1,
+                    "amount": "1lb"
+                },
+                {
+                    "id": 2,
+                    "amount": "2lb"
+                }
+            ]
+        }
+    ]
+}
