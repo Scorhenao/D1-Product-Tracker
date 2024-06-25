@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8d7da; /* Rojo claro */
+            color: #721c24; /* Rojo oscuro */
+            padding: 20px;
+        }
+        .container {
+            background-color: #fff; /* Blanco */
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .btn-danger {
+            background-color: #dc3545; /* Rojo */
+            border-color: #dc3545; /* Rojo */
+        }
+        .btn-danger:hover {
+            background-color: #c82333; /* Rojo más oscuro */
+            border-color: #bd2130; /* Rojo más oscuro */
+        }
+        .btn-success {
+            background-color: #28a745; /* Verde */
+            border-color: #28a745; /* Verde */
+        }
+        .btn-success:hover {
+            background-color: #218838; /* Verde más oscuro */
+            border-color: #1e7e34; /* Verde más oscuro */
+        }
+        .shopping-list {
+            margin-bottom: 20px;
+        }
+        .list-item {
+            margin-bottom: 10px;
+        }
+        #total {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>User Dashboard</h1>
+        <button class="btn btn-danger float-right mb-3">Cerrar Sesión</button>
+        <button id="addListBtn" class="btn btn-success">Agregar Lista de Compras</button>
+        <div id="addListForm" style="display: none;">
+            <div class="form-group">
+                <label for="listName">Nombre de la Lista:</label>
+                <input type="text" id="listName" class="form-control" placeholder="Ingrese el nombre de la lista">
+            </div>
+            <button id="createListBtn" class="btn btn-primary">Crear</button>
+        </div>
+        <hr>
+        <h2>Listas de Compras</h2>
+        <div id="shoppingLists">
+            <!-- Aquí se agregarán dinámicamente las listas de compras -->
+        </div>
+        <div id="total"></div>
+        <button id="saveListBtn" class="btn btn-primary mt-3">Guardar Lista</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // JavaScript para manejar la interacción del usuario con la página
+        $(document).ready(function() {
+            // Mostrar/ocultar formulario para agregar lista de compras
+            $('#addListBtn').click(function() {
+                $('#addListForm').toggle();
+            });
+
+            // Crear nueva lista de compras
+            $('#createListBtn').click(function() {
+                const listName = $('#listName').val();
+                if (listName.trim() === '') {
+                    alert('Ingrese un nombre válido para la lista');
+                    return;
+                }
+                // Simular la creación de la lista y agregarla dinámicamente
+                const newListHtml = `<div class="card mb-3 shopping-list">
+                                        <div class="card-body">
+                                            <h5 class="card-title">${listName}</h5>
+                                            <p class="card-text">${new Date().toLocaleDateString()}</p>
+                                            <div class="list-items">
+                                                <!-- Aquí se agregarán dinámicamente los productos -->
+                                            </div>
+                                            <button class="btn btn-success btn-add-product">Agregar Producto</button>
+                                            <button class="btn btn-danger btn-remove-list">Eliminar Lista</button>
+                                        </div>
+                                    </div>`;
+                $('#shoppingLists').append(newListHtml);
+                $('#addListForm').hide();
+            });
+
+            // Simular agregar productos a la lista de compras
+            $('#shoppingLists').on('click', '.btn-add-product', function() {
+                // Aquí deberías implementar la lógica para agregar productos
+                // Puedes usar modales, formularios o cualquier otro método para interactuar
+                // con el usuario y permitirle agregar productos a una lista específica
+                console.log('Agregar producto a la lista');
+            });
+
+            // Simular eliminar lista de compras
+            $('#shoppingLists').on('click', '.btn-remove-list', function() {
+                $(this).closest('.card').remove();
+            });
+
+            // Simular guardar lista de compras
+            $('#saveListBtn').click(function() {
+                alert('Lista de compras guardada correctamente');
+            });
+        });
+    </script>
+</body>
+</html>

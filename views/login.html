@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Fondo gris claro */
+        }
+        .login-container {
+            max-width: 400px; /* Ancho máximo del contenedor del formulario */
+            margin: auto; /* Centrado horizontal */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Sombra ligera */
+            background-color: #ffffff; /* Fondo blanco */
+        }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #dc3545; /* Rojo */
+        }
+        .login-container .form-control {
+            border-color: #dc3545; /* Borde rojo */
+        }
+        .login-container .btn-primary {
+            background-color: #dc3545; /* Rojo */
+            border-color: #dc3545; /* Borde rojo */
+        }
+        .login-container .btn-primary:hover {
+            background-color: #c82333; /* Rojo más oscuro al pasar el mouse */
+            border-color: #bd2130; /* Borde rojo más oscuro */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container mt-5 shadow-lg">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="usernameOrEmail">Username or Email</label>
+                <input type="text" class="form-control" id="usernameOrEmail" placeholder="Enter username or email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            loginForm.addEventListener('submit', async function(event) {
+                event.preventDefault(); // Evitar el comportamiento por defecto del formulario
+
+                const usernameOrEmail = document.getElementById('usernameOrEmail').value;
+                const password = document.getElementById('password').value;
+
+                try {
+                    const response = await fetch('/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ usernameOrEmail, password })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Credenciales inválidas.');
+                    }
+
+                    window.location.href = '/user'; // Redirigir al usuario a la vista de usuario
+                } catch (error) {
+                    console.error('Error:', error.message);
+                    alert('Error al iniciar sesión. Por favor, verifica tus credenciales.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
